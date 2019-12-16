@@ -6,13 +6,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-    <script src="/main.js"></script>
     <link rel = "stylesheet"
     type = "text/css"
     href = "../css/main.css"
 
   </head>
+    <script src="node_modules/socket.io-client/dist/socket.io.js">
 
+    </script>
+
+    <script src="/main.js"></script>
   <script>
     function haeKayttaja(){
       var x = document.cookie;
@@ -24,42 +27,51 @@
   <body onload="haeKayttaja()">
 <button type="button" id="testcookie" name="button">Testaa cookie</button>
 
-<div class="kirjautuminen">
+<div class="laatikko">
+  <br>
   <h3 id="tervtu"></h3>
   <button type="button" id="KayttajaMuok" name="button">Muokkaa tietoja</button>
   <button type="button" id="Logout" name="button">Kirjaudu ulos</button>
 
 </div>
 
-<div class="valikko">
-  <div class="main-column">
-    <h2>Main Column</h2>
-  </div>
-
-  <div class="sidebar-one">
-    <h3>Sidebar One</h3>
-
-  </div>
-
-  <div class="sidebar-two">
-    <h3>Sidebar Two</h3>
-
-  </div>
-</div>
-
 <div class="chatit">
   <div class="laatikko">
     <h4>Huoneet</h4>
+    <div id="huonlaati">
+
+    </div>
+    <hr>
     <p>Huone 1</p>
     <p>Huone 2</p>
     <p>Huone 3</p>
+    <button type="button" id="huone4" name="switchbutton" onClick="huonenappi(this.id)">huone4</button>
+    <form id="huoneet">
+
+      <button type="submit" name="huoneLuonti" >Luo huone</button>
+      <bre>Nimi: </bre>
+      <input type="text" id="huoneNimi" >
+    </form>
+
   </div>
 
   <div class="laatikko">
     <h4>Chatti</h4>
+
+    <hr>
+    <div id="chat">
+
+    </div>
+    <form id="send-container">
+      <input type="text" id="message-input" >
+      <button type="submit" name="send-button">Send</button>
+    </form>
   </div>
 
 </div>
 
   </body>
+  <script src="/chat.js">
+
+  </script>
 </html>

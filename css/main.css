@@ -66,7 +66,7 @@ h2, h3 {
 
 /* third example */
 .chatit {
-  max-width: 1400px;
+  max-width: 1900px;
   margin: 40px auto 0 auto;
 }
 
@@ -86,3 +86,4 @@ h2, h3 {
 
 .laatikko:nth-child(1) {background-color: #c0dbe2;}
 .laatikko:nth-child(2) {background-color: #cdf1c3;}
+.laatikko {background-color: #c1c3;}

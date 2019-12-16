@@ -67,10 +67,11 @@ module.exports =
       var x = req.headers.cookie;
       var b = x.split('=');
       var data = req.params;
-      var sql = 'UPDATE kayttajat SET salasana = "' + data.us + '" WHERE nimi LIKE "' + b[0] + '" AND salasana LIKE "' + data.vs + '" AND kayttajaID LIKE "' + b[1] + '"'
+      var sql = 'UPDATE kayttajat SET salasana = "' + data.us + '" WHERE nimi LIKE "' + b[0] + '" AND salasana LIKE "' + data.vs + '"'
       connection.query(sql, function(error, results, fields){
         if(results.affectedRows == 0){
           console.log("Vanha salasana väärin");
+          console.log(b[0] + "eka " + b[1]);
           res.jsonp({success:true});
         } else {
           console.log("Salasana vaihdettu");
