@@ -16,4 +16,8 @@ $(document).ready(function() {
     window.location.replace("http://localhost:3002/");
   });
 
+  $("#KayttajaMuok").click(function(){
+    window.location.replace("http://localhost:3002/muokkaus");
+  });
+
 } );

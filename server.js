@@ -7,7 +7,6 @@ var controller = require('./controller');
 const http = require('http');
 const url = require('url');
 
-
 var cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
@@ -43,6 +42,9 @@ app.route('/Types')
 app.route('/logi/:nimi/:salasana')
   .get(controller.login);
 
+app.route('/muoks/:vs/:us')
+  .post(controller.muokkaus);
+
 app.route('/regi/:nimi/:salasana')
   .post(controller.rekisteroi);
 
@@ -71,7 +73,10 @@ app.get('/login', function(request, response){
 
 app.get('/chatti', function(request, response){
   response.sendFile('main.html', { root: __dirname + "/html" } );
+});
 
+app.get('/muokkaus', function(request, response){
+  response.sendFile('tietmuok.html', { root: __dirname + "/html" } );
 });
 
 app.listen(port, hostname, () => {

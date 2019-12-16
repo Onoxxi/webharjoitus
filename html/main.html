@@ -12,20 +12,23 @@
     href = "../css/main.css"
 
   </head>
-  <body>
+
+  <script>
+    function haeKayttaja(){
+      var x = document.cookie;
+      b = x.split('=');
+      document.getElementById('tervtu').innerHTML = "Tervetuloa " + b[0] + "!";
+    }
+  </script>
+
+  <body onload="haeKayttaja()">
 <button type="button" id="testcookie" name="button">Testaa cookie</button>
-<button type="button" id="Logout" name="button">Kirjaudu ulos</button>
+
 <div class="kirjautuminen">
-  <form action="">
-    <div class="form-row">
-      <label for="name">Nimi:</label>
-      <input type="text" id="Nimi">
-    </div>
-    <div class="form-row">
-      <label for="favColor">Salasana:</label>
-      <input type="text" id="Salis">
-    </div>
-  </form>
+  <h3 id="tervtu"></h3>
+  <button type="button" id="KayttajaMuok" name="button">Muokkaa tietoja</button>
+  <button type="button" id="Logout" name="button">Kirjaudu ulos</button>
+
 </div>
 
 <div class="valikko">
