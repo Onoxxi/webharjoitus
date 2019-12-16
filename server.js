@@ -49,12 +49,20 @@ app.route('/regi/:nimi/:salasana')
   .post(controller.rekisteroi);
 
 app.get('/', function(request, response){
-  var keksi;
-  console.log("asd", request.cookies);
-  keksi = request.cookies;
-  console.log(keksi[0]);
-  if(keksi[0] == null){
-    console.log(keksi[0]);
+  //var keksi;
+  //console.log("asd", request.cookies);
+  //keksi = request.cookies;
+  //console.log(keksi[0]);
+  var b = "";
+  var x = request.headers.cookie;
+  if(x == null){
+
+  } else {
+    var b = x.split('=');
+  }
+
+  if(b[0] == null){
+    console.log(b[0]);
     response.sendFile('login.html', { root: __dirname + "/html" } );
     console.log("login");
   } else {
