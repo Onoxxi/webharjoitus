@@ -92,10 +92,6 @@ app.route('/luoHuon/:huonNimi')
   .post(controller.huoneenLuonti);
 
 app.get('/', function(request, response){
-  //var keksi;
-  //console.log("asd", request.cookies);
-  //keksi = request.cookies;
-  //console.log(keksi[0]);
   var b = "";
   var x = request.headers.cookie;
 
@@ -122,15 +118,68 @@ app.get('/rekisteroi', function(request, response){
 });
 
 app.get('/login', function(request, response){
-  response.sendFile('login.html', { root: __dirname + "/html" } );
+  var b = "";
+  var x = request.headers.cookie;
+
+  console.log(b[0]);
+  if(x == null){
+    response.sendFile('login.html', { root: __dirname + "/html" } );
+  } else {
+    var b = x.split('=');
+  }
+
+  if(b[0] == null || b[0] == "io"){
+    response.clearCookie("io");
+    console.log(b[0]);
+    response.sendFile('login.html', { root: __dirname + "/html" } );
+    console.log("login");
+  } else {
+    response.sendFile('main.html', { root: __dirname + "/html" } );
+    console.log("main");
+  }
 });
 
 app.get('/chatti', function(request, response){
-  response.sendFile('main.html', { root: __dirname + "/html" } );
+  var b = "";
+  var x = request.headers.cookie;
+
+  console.log(b[0]);
+  if(x == null){
+    response.sendFile('login.html', { root: __dirname + "/html" } );
+  } else {
+    var b = x.split('=');
+  }
+  if(b[0] == null || b[0] == "io"){
+    response.clearCookie("io");
+    console.log(b[0]);
+    response.sendFile('login.html', { root: __dirname + "/html" } );
+    console.log("login");
+  } else {
+    response.sendFile('main.html', { root: __dirname + "/html" } );
+    console.log("main");
+  }
+
 });
 
 app.get('/muokkaus', function(request, response){
-  response.sendFile('tietmuok.html', { root: __dirname + "/html" } );
+  var b = "";
+  var x = request.headers.cookie;
+
+  console.log(b[0]);
+  if(x == null){
+    response.sendFile('login.html', { root: __dirname + "/html" } );
+  } else {
+    var b = x.split('=');
+  }
+  if(b[0] == null || b[0] == "io"){
+    response.clearCookie("io");
+    console.log(b[0]);
+    response.sendFile('login.html', { root: __dirname + "/html" } );
+    console.log("login");
+  } else {
+    response.sendFile('tietmuok.html', { root: __dirname + "/html" } );
+    console.log("main");
+  }
 });
 
 app.listen(port, hostname, () => {
