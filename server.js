@@ -52,9 +52,7 @@ redirect(app);
 
 const hostname = '127.0.0.1';
 const port = process.env.PORT || 3002;
-//evästeet
 
-//CORS middleware
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -70,11 +68,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-// Staattiset filut
+
 app.use(express.static('js'));
 
-// REST API Asiakas
-app.route('/Types')
 
 app.route('/logi/:nimi/:salasana')
   .get(controller.login);

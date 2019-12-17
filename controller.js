@@ -34,7 +34,6 @@ module.exports =
 
     login: function(req, res){
       var data = req.params;
-
       var sql = 'SELECT kayttajaID FROM kayttajat WHERE nimi LIKE "' + data.nimi + '" AND salasana LIKE "' + data.salasana + '"'
       connection.query(sql, function(error, results, fields){
         if(results == ""){
@@ -83,7 +82,6 @@ module.exports =
             global.rooms = global.rooms + "," + element.huoneNimi ;
           }
         });
-
         res.json(results);
       });
       console.log("Body = " + JSON.stringify(req.body));
