@@ -20,4 +20,25 @@ $(document).ready(function() {
     window.location.replace("http://localhost:3002/muokkaus");
   });
 
+  $("#HuoneLuontNap").click(function(){
+    var urli ="http://localhost:3002/luoHuon/" + $("#huoneenNimi").val();
+    $.post(urli,  function(data) {
+      if(data['success']){
+        alert("Huone on jo olemassa");
+        $("#huoneenNimi").val("");
+      } else {
+        alert("Huoneen luonti onnistu");
+        $("#huoneenNimi").val("");
+        location.reload();
+      }
+    }, "json");
+  });
+
+  var urli2 = "http://localhost:3002/haehuoneet";
+  $.get(urli2, function(data) {
+    $.each(data, function(n, val){
+      $("#huonlaati").append('<button type="button" id="' + val.huoneNimi + '" onClick="huonenappi(this.id)">' + val.huoneNimi + '</button>');
+    });
+  });
+
 } );

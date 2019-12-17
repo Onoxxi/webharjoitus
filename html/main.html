@@ -35,24 +35,16 @@
 
 </div>
 
-<div class="chatit">
+<div class="laatikot">
   <div class="laatikko">
     <h4>Huoneet</h4>
+    <hr>
     <div id="huonlaati">
 
     </div>
     <hr>
-    <p>Huone 1</p>
-    <p>Huone 2</p>
-    <p>Huone 3</p>
-    <button type="button" id="huone4" name="switchbutton" onClick="huonenappi(this.id)">huone4</button>
-    <form id="huoneet">
-
-      <button type="submit" name="huoneLuonti" >Luo huone</button>
-      <bre>Nimi: </bre>
-      <input type="text" id="huoneNimi" >
-    </form>
-
+    <input type="text" id="huoneenNimi" >
+    <button type="button" id="HuoneLuontNap">Luo huone</button>
   </div>
 
   <div class="laatikko">
@@ -63,6 +55,7 @@
 
     </div>
     <form id="send-container">
+      <hr>
       <input type="text" id="message-input" >
       <button type="submit" name="send-button">Send</button>
     </form>

@@ -8,7 +8,9 @@ const http = require('http');
 const url = require('url');
 
 const users = {}
-var rooms = ['room1', 'room2', 'room3', 'huone4']
+
+global.rooms = ['room1']
+
 const io = require('socket.io')(3000)
 io.on('connection', socket => {
 
@@ -23,13 +25,6 @@ io.on('connection', socket => {
     console.log(message);
     //socket.broadcast.emit('chat-message', {message: message, name: users[socket.id]})
     socket.in(socket.room).emit('chat-message', {message:message, name: users[socket.id]})
-  })
-
-  socket.on('luo-huone', nimi =>{
-    console.log(nimi);
-    rooms = rooms + "," + nimi;
-    console.log(rooms);
-    socket.broadcast.emit('uusihuone', {nimi:nimi})
   })
 
   socket.on('disconnect', () => {
@@ -89,6 +84,12 @@ app.route('/muoks/:vs/:us')
 
 app.route('/regi/:nimi/:salasana')
   .post(controller.rekisteroi);
+
+app.route('/haehuoneet')
+  .get(controller.huoneHaku);
+
+app.route('/luoHuon/:huonNimi')
+  .post(controller.huoneenLuonti);
 
 app.get('/', function(request, response){
   //var keksi;

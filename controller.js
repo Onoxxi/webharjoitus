@@ -13,16 +13,6 @@ var connection = mysql.createConnection({
 
 module.exports =
 {
-    fetchAll: function(req, res){
-        connection.query("SELECT * FROM Asiakas", function(error, results, fields){
-          console.log("Data = " + JSON.stringify(results));
-          res.json(results);
-        });
-        console.log("Body = " + JSON.stringify(req.body));
-        console.log("Params = " + JSON.stringify(req.query));
-
-    },
-
     rekisteroi: function(req, res){
       var data = req.params;
 
@@ -81,6 +71,37 @@ module.exports =
       });
       console.log("Body = " + JSON.stringify(req.body));
       console.log("Params = " + JSON.stringify(req.query));
+    },
+
+    huoneHaku: function(req, res){
+      connection.query("SELECT huoneNimi FROM huoneet", function(error, results, fields){
+        console.log("Data = " + JSON.stringify(results));
+        results.forEach(element =>{
+          if(global.rooms.includes(element.huoneNimi)){
+
+          }else {
+            global.rooms = global.rooms + "," + element.huoneNimi ;
+          }
+        });
+
+        res.json(results);
+      });
+      console.log("Body = " + JSON.stringify(req.body));
+      console.log("Params = " + JSON.stringify(req.query));
+    },
+
+    huoneenLuonti: function(req,res){
+      var data = req.params;
+      var sql = 'INSERT INTO huoneet (huoneNimi) VALUES ("' + data.huonNimi + '")';
+      connection.query(sql, function(error,results,fields){
+        if(results == null){
+          console.log("Huone on jo olemassa");
+          res.jsonp({success:true});
+        } else {
+          console.log("Huone luotu");
+          res.jsonp({success:false});
+        }
+      });
     }
 
 
