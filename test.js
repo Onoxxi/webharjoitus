@@ -3,7 +3,7 @@ var controller = require('./controller');
 
 
 describe('test', function() {
-  it('Pitäisi palauttaa jotain', function(){
+  it('Pitäisi palauttaa results ', function(){
     assert.equal(5, controller.login("maija", "salis5"));
   });
 });
